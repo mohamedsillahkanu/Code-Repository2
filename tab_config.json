@@ -7,7 +7,7 @@
     },
     {
       "id": "analysis",
-      "title": "Malaria Analysis"
+      "title": "Malaria Testing"
     },
     {
       "id": "visualization", 
@@ -31,7 +31,7 @@
   "tabs": {
     "analysis": {
       "file": "malaria_analysis.md",
-      "title": "Malaria Analysis Code"
+      "title": "Malaria Testing"
     },
     "visualization": {
       "file": "combine_excel.md", 

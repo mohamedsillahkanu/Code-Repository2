@@ -1,3 +1,4 @@
+## Code
 ```python
 """
 Malaria Testing Epidemiological Trend Analysis - PNG, PDF, and HTML Output with Individual Y-Axis Scaling

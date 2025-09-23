@@ -1,3 +1,4 @@
+```python
 """
 Malaria Testing Epidemiological Trend Analysis - PNG, PDF, and HTML Output with Individual Y-Axis Scaling
 Creates individual PNG files, multi-page PDFs, and HTML reports with Enhanced Collapsible Navigation
@@ -1197,3 +1198,4 @@ if __name__ == "__main__":
     if df is not None:
         print(f"\nDataframe loaded successfully: {df.shape}")
         print("Available columns:", df.columns.tolist())
+```

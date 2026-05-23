@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -820,15 +820,20 @@
                 }
                 
                 const fileContent = await response.text();
+                console.log('Loaded file:', filename);
+                console.log('File content length:', fileContent.length);
                 
                 // Hide loading message
                 if (loadingMessage) loadingMessage.style.display = 'none';
                 
                 // Parse the markdown and create template
                 const parsedTemplate = parseMarkdownTemplate(fileContent);
+                console.log('Parsed template length:', parsedTemplate.length);
+                
                 if (contentDiv) {
                     contentDiv.innerHTML = parsedTemplate;
                     contentDiv.style.display = 'block';
+                    console.log('Content displayed in:', tabId);
                 }
                 
             } catch (error) {

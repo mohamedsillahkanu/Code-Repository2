@@ -563,153 +563,96 @@
             </div>
         </div>
 
-        <!-- Tab 2 -->
+        <!-- Tab 2 - Dynamically loads from malaria-analysis.md -->
         <div id="tab2" class="tab-content">
             <div class="section-header">Malaria Data Analysis Code</div>
-            
-            <!-- Auto-loading Messages -->
-            <div id="tab2LoadingMessage" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(74, 123, 167, 0.05); border-radius: 15px; margin: 20px 0;">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Auto-loading from repository...</div>
+            <div id="tab2LoadingMsg" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
+                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Loading analysis code from repository...</div>
                 <div style="font-size: 1.1em; margin-bottom: 10px;">Reading malaria_analysis.md file</div>
-                <div style="font-size: 1em; color: #666;">Parsing markdown structure and applying syntax highlighting</div>
-                <div style="margin-top: 15px;">
-                    <div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                </div>
+                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
             </div>
-
-            <div id="tab2ErrorMessage" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load malaria_analysis.md</div>
+            <div id="tab2ErrorMsg" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
+                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load malaria-analysis.md</div>
                 <div style="font-size: 1.1em; margin-bottom: 10px;">Please ensure the file exists in the main repository directory</div>
-                <button onclick="loadMarkdownFile('malaria_analysis.md', 'tab2')" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">
-                    🔄 Retry Loading
-                </button>
+                <button onclick="loadMalariaAnalysisMarkdown()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">🔄 Retry Loading</button>
             </div>
-
-            <!-- Dynamic Content -->
-            <div id="tab2Content" style="display: none;">
-                <!-- Content will be dynamically generated here -->
-            </div>
+            <div id="tab2Content" style="display: none;"></div>
         </div>
 
-        <!-- Tab 3 - Data Visualization Template -->
+        <!-- Tab 3 - Data Visualization Template (loads from analysis_code.md) -->
         <div id="tab3" class="tab-content">
             <div class="section-header">Data Visualization</div>
             
-            <div class="content-text">
-                <strong>Malaria Data Visualization Tools</strong><br>
-                This section automatically reads and parses your data_viz.md file from the repository when you open this tab. 
-                It creates collapsible sections based on markdown headers (## Step) and applies Python syntax highlighting 
-                to code blocks with unique colors for imports, functions, variables, and other Python elements.
-            </div>
-
-            <!-- Auto-loading Messages -->
-            <div id="tab3LoadingMessage" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Auto-loading from repository...</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Reading data_viz.md file</div>
-                <div style="font-size: 1em; color: #666;">Parsing markdown structure and applying syntax highlighting</div>
-                <div style="margin-top: 15px;">
-                    <div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <div class="collapsible-section">
+                <button class="section-toggle collapsed" onclick="toggleSection(this)">
+                    📊 Data Visualization Template
+                </button>
+                <div class="section-content">
+                    <div class="content-text">
+                        <strong>Malaria Data Visualization Template</strong><br>
+                        This section automatically reads and parses your analysis_code.md file from the repository when you open this tab. 
+                        It creates collapsible sections based on markdown headers (## Step) and applies Python syntax highlighting 
+                        to code blocks with unique colors for imports, functions, variables, and other Python elements.
+                    </div>
                 </div>
             </div>
 
-            <div id="tab3ErrorMessage" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load data_viz.md</div>
+            <div id="templateLoadingMessage" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
+                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Auto-loading template from repository...</div>
+                <div style="font-size: 1.1em; margin-bottom: 10px;">Reading analysis_code.md file</div>
+                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
+            </div>
+            <div id="templateErrorMessage" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
+                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load analysis_code.md</div>
                 <div style="font-size: 1.1em; margin-bottom: 10px;">Please ensure the file exists in the main repository directory</div>
-                <button onclick="loadMarkdownFile('data_viz.md', 'tab3')" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">
-                    🔄 Retry Loading
-                </button>
+                <button onclick="loadAnalysisCodeMarkdown()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">🔄 Retry Loading</button>
             </div>
-
-            <!-- Dynamic Template Content -->
-            <div id="tab3Content" style="display: none;">
-                <!-- Template sections will be dynamically generated here -->
-            </div>
+            <div id="templateContent" style="display: none;"></div>
         </div>
 
         <!-- Tab 4 -->
         <div id="tab4" class="tab-content">
             <div class="section-header">Reports & Export</div>
-            
             <div class="content-text">
-                <strong>Malaria Program Reports</strong><br>
-                This section automatically reads and parses your report.md file from the repository when you open this tab. 
-                It creates collapsible sections based on markdown headers (## Section) and applies syntax highlighting 
-                to code blocks and structured content.
-            </div>
-
-            <!-- Auto-loading Messages -->
-            <div id="tab4LoadingMessage" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Auto-loading from repository...</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Reading report.md file</div>
-                <div style="font-size: 1em; color: #666;">Parsing markdown structure and generating report layout</div>
-                <div style="margin-top: 15px;">
-                    <div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                </div>
-            </div>
-
-            <div id="tab4ErrorMessage" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load report.md</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Please ensure the file exists in the main repository directory</div>
-                <button onclick="loadMarkdownFile('report.md', 'tab4')" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">
-                    🔄 Retry Loading
-                </button>
-            </div>
-
-            <!-- Dynamic Content -->
-            <div id="tab4Content" style="display: none;">
-                <!-- Content will be dynamically generated here -->
+                This tab will contain report generation and data export functionality.
             </div>
         </div>
     </div>
 
     <script>
+        // Core functions
         function openTab(evt, tabName) {
-            // Hide all tab contents
             var tabcontents = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabcontents.length; i++) {
                 tabcontents[i].classList.remove("active");
             }
-            
-            // Remove active class from all tab buttons
             var tabbuttons = document.getElementsByClassName("tab-button");
             for (var i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].classList.remove("active");
             }
-            
-            // Show the selected tab content and mark button as active
             var targetTab = document.getElementById(tabName);
-            if (targetTab) {
-                targetTab.classList.add("active");
-            }
-            if (evt && evt.currentTarget) {
-                evt.currentTarget.classList.add("active");
-            }
+            if (targetTab) targetTab.classList.add("active");
+            if (evt && evt.currentTarget) evt.currentTarget.classList.add("active");
             
-            // Auto-load markdown files for different tabs
+            // Load content when tabs are opened
             if (tabName === 'tab2') {
-                const tabContent = document.getElementById('tab2Content');
-                if (tabContent && tabContent.innerHTML.trim() === '') {
-                    loadMarkdownFile('malaria_analysis.md', 'tab2');
+                const contentDiv = document.getElementById('tab2Content');
+                if (contentDiv && contentDiv.innerHTML.trim() === '') {
+                    loadMalariaAnalysisMarkdown();
                 }
-            } else if (tabName === 'tab3') {
-                const tabContent = document.getElementById('tab3Content');
-                if (tabContent && tabContent.innerHTML.trim() === '') {
-                    loadMarkdownFile('data_viz.md', 'tab3');
-                }
-            } else if (tabName === 'tab4') {
-                const tabContent = document.getElementById('tab4Content');
-                if (tabContent && tabContent.innerHTML.trim() === '') {
-                    loadMarkdownFile('report.md', 'tab4');
+            }
+            if (tabName === 'tab3') {
+                const templateDiv = document.getElementById('templateContent');
+                if (templateDiv && templateDiv.innerHTML.trim() === '') {
+                    loadAnalysisCodeMarkdown();
                 }
             }
         }
 
         function toggleSection(button) {
             if (!button || !button.nextElementSibling) return;
-            
             var content = button.nextElementSibling;
             var isCollapsed = content.classList.contains("expanded");
-            
             if (isCollapsed) {
                 content.classList.remove("expanded");
                 button.classList.add("collapsed");
@@ -720,56 +663,191 @@
         }
 
         function copyCode(elementId) {
-            const codeContent = document.getElementById(elementId);
-            if (!codeContent) return;
+            const codeElement = document.getElementById(elementId);
+            if (!codeElement) return;
+            const textContent = codeElement.innerText || codeElement.textContent;
+            // Find associated copy button dynamically
+            let copyBtn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
+            if (!copyBtn) {
+                copyBtn = codeElement.closest('.code-section')?.querySelector('.copy-btn');
+            }
+            navigator.clipboard.writeText(textContent).then(function() {
+                if (copyBtn) {
+                    copyBtn.innerHTML = '<span>✅</span> Copied!';
+                    copyBtn.classList.add('copied');
+                    setTimeout(function() {
+                        copyBtn.innerHTML = '<span>📋</span> Copy Code';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }
+            }).catch(function(err) {
+                console.error('Copy failed:', err);
+            });
+        }
+
+        // Syntax highlighter (same as original)
+        function highlightPythonCode(code) {
+            let highlighted = code
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\b(import|from|def|class|if|else|elif|for|while|try|except|finally|return|with|as|break|continue|pass|yield|lambda|global|nonlocal|assert|del|raise|async|await)\b/g, '<span class="keyword">$1</span>')
+                .replace(/\b(print|len|range|enumerate|zip|map|filter|sum|max|min|abs|round|sorted|reversed|any|all|type|isinstance|hasattr|getattr|setattr|delattr|dir|vars|id|hash|repr|str|int|float|bool|list|tuple|dict|set|frozenset|open|input)\b/g, '<span class="function">$1</span>')
+                .replace(/\b(pd|np|plt|sns|px|go|os|sys|re|json|csv|datetime|time|math|random|collections|itertools|functools|pathlib)\b/g, '<span class="variable">$1</span>')
+                .replace(/\b(\w+)\s*\(/g, '<span style="color: #06b6d4; font-weight: 600;">$1</span>(')
+                .replace(/'([^'\\]|\\.)*'/g, '<span class="string">$&</span>')
+                .replace(/"([^"\\]|\\.)*"/g, '<span class="string">$&</span>')
+                .replace(/'''[\s\S]*?'''/g, '<span class="string">$&</span>')
+                .replace(/"""[\s\S]*?"""/g, '<span class="string">$&</span>')
+                .replace(/\b(\d+\.?\d*)\b/g, '<span class="number">$1</span>')
+                .replace(/#.*$/gm, '<span class="comment">$&</span>')
+                .replace(/([=+\-*/%<>!&|^~]+)/g, '<span class="operator">$1</span>')
+                .replace(/\.(\w+)/g, '.<span style="color: #38bdf8; font-weight: 500;">$1</span>')
+                .replace(/\b(None|True|False|self|cls)\b/g, '<span style="color: #ec4899; font-weight: 600;">$1</span>');
+            return highlighted;
+        }
+
+        // Generic markdown parser for code blocks (supports steps with "## Step")
+        function parseMarkdownToSections(content) {
+            const lines = content.split('\n');
+            let html = '';
+            let currentStep = null;
+            let currentContent = [];
+            let inCodeBlock = false;
+            let codeBlockContent = [];
+            let stepCounter = 0;
             
-            let copyBtn;
-            // Get the correct copy button based on the code element
-            if (elementId === 'step1Code') copyBtn = document.getElementById('copyBtn1');
-            else if (elementId === 'step2Code') copyBtn = document.getElementById('copyBtn2');
-            else if (elementId === 'step3Code') copyBtn = document.getElementById('copyBtn3');
-            else if (elementId === 'step4Code') copyBtn = document.getElementById('copyBtn4');
-            else if (elementId === 'step5Code') copyBtn = document.getElementById('copyBtn5');
-            else if (elementId === 'step6Code') copyBtn = document.getElementById('copyBtn6');
-            // Dynamic template copy buttons
-            else {
-                copyBtn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.startsWith('## ') && line.toLowerCase().includes('step')) {
+                    if (currentStep) {
+                        html += createStepSectionFromParsed(currentStep, currentContent, stepCounter);
+                        stepCounter++;
+                    }
+                    currentStep = line.replace('## ', '').trim();
+                    currentContent = [];
+                    inCodeBlock = false;
+                    codeBlockContent = [];
+                } else if (line.startsWith('```')) {
+                    if (!inCodeBlock) {
+                        inCodeBlock = true;
+                        codeBlockContent = [];
+                    } else {
+                        inCodeBlock = false;
+                        currentContent.push({
+                            type: 'code',
+                            content: codeBlockContent.join('\n')
+                        });
+                    }
+                } else if (inCodeBlock) {
+                    codeBlockContent.push(line);
+                } else if (currentStep && line.trim() !== '') {
+                    currentContent.push({
+                        type: 'text',
+                        content: line
+                    });
+                }
+            }
+            if (currentStep) {
+                html += createStepSectionFromParsed(currentStep, currentContent, stepCounter);
+            }
+            return html;
+        }
+
+        function createStepSectionFromParsed(stepTitle, content, stepNumber) {
+            let html = `<div class="collapsible-section">
+                <button class="section-toggle collapsed" onclick="toggleSection(this)">
+                    📋 ${stepTitle}
+                </button>
+                <div class="section-content">`;
+            
+            const textItems = content.filter(item => item.type === 'text');
+            if (textItems.length) {
+                html += `<div class="step-description">${textItems.map(t => t.content).join('<br>')}</div>`;
             }
             
-            if (!copyBtn) return;
-            
-            // Get the text content without HTML tags
-            const textContent = codeContent.innerText || codeContent.textContent;
-            
-            // Copy to clipboard
-            navigator.clipboard.writeText(textContent).then(function() {
-                // Change button appearance
-                copyBtn.innerHTML = '<span>✅</span> Copied!';
-                copyBtn.classList.add('copied');
-                
-                // Reset button after 2 seconds
-                setTimeout(function() {
-                    copyBtn.innerHTML = '<span>📋</span> Copy Code';
-                    copyBtn.classList.remove('copied');
-                }, 2000);
-            }).catch(function(err) {
-                console.error('Could not copy text: ', err);
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = textContent;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                
-                copyBtn.innerHTML = '<span>✅</span> Copied!';
-                copyBtn.classList.add('copied');
-                
-                setTimeout(function() {
-                    copyBtn.innerHTML = '<span>📋</span> Copy Code';
-                    copyBtn.classList.remove('copied');
-                }, 2000);
+            const codeBlocks = content.filter(item => item.type === 'code');
+            codeBlocks.forEach((block, idx) => {
+                const uniqueId = `dynamicCode_${stepNumber}_${idx}`;
+                html += `
+                    <div class="code-section">
+                        <div class="code-header">
+                            <div class="code-title"><span>💻</span> ${stepTitle} - Code</div>
+                            <button class="copy-btn" onclick="copyCode('${uniqueId}')">📋 Copy Code</button>
+                        </div>
+                        <div class="code-container">
+                            <div class="code-content" id="${uniqueId}">${highlightPythonCode(block.content)}</div>
+                        </div>
+                    </div>
+                `;
             });
+            html += `</div></div>`;
+            return html;
+        }
+
+        // Load malaria_analysis.md for Tab2
+        async function loadMalariaAnalysisMarkdown() {
+            const loadingDiv = document.getElementById('tab2LoadingMsg');
+            const errorDiv = document.getElementById('tab2ErrorMsg');
+            const contentDiv = document.getElementById('tab2Content');
+            
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            contentDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch('malaria_analysis.md');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const markdown = await response.text();
+                const parsedHtml = parseMarkdownToSections(markdown);
+                contentDiv.innerHTML = parsedHtml;
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            } catch (err) {
+                console.warn('Could not load malaria-analysis.md, falling back to embedded content from original html', err);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                // Fallback: embed original hardcoded content exactly as before, using same structure and steps (to reproduce original output)
+                contentDiv.innerHTML = getEmbeddedMalariaAnalysisFallback();
+                contentDiv.style.display = 'block';
+            }
+        }
+
+        // Fallback reproduces the exact original tab2 code from original HTML
+        function getEmbeddedMalariaAnalysisFallback() {
+            return `
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📋 Step 1: Import Required Libraries</button><div class="section-content"><div class="step-description">Import all necessary Python libraries for data processing, analysis, and visualization.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 1 - Library Imports</div><button class="copy-btn" onclick="copyCode('step1Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step1Code"><span class="comment"># Import necessary libraries</span>\n<span class="keyword">import</span> <span class="function">pandas</span> <span class="keyword">as</span> <span class="variable">pd</span>\n<span class="keyword">import</span> <span class="function">numpy</span> <span class="keyword">as</span> <span class="variable">np</span>\n<span class="keyword">import</span> <span class="function">matplotlib.pyplot</span> <span class="keyword">as</span> <span class="variable">plt</span>\n<span class="keyword">import</span> <span class="function">seaborn</span> <span class="keyword">as</span> <span class="variable">sns</span>\n<span class="keyword">from</span> <span class="function">datetime</span> <span class="keyword">import</span> <span class="function">datetime</span></div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">🔬 Step 2: Define Main Analysis Function</button><div class="section-content"><div class="step-description">Create the main function that will process malaria confirmation data and calculate key statistics.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 2 - Function Definition</div><button class="copy-btn" onclick="copyCode('step2Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step2Code"><span class="keyword">def</span> <span class="function">analyze_malaria_confirmation</span>(<span class="variable">data_file</span>):\n    <span class="string">"""\n    Analyze malaria confirmation rates across districts and time periods\n    \n    Parameters:\n    data_file (str): Path to the malaria data CSV file\n    \n    Returns:\n    dict: Analysis results including trends and statistics\n    """</span></div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📊 Step 3: Load and Process Data</button><div class="section-content"><div class="step-description">Load the CSV data file and perform initial data processing including date conversion and confirmation rate calculation.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 3 - Data Processing</div><button class="copy-btn" onclick="copyCode('step3Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step3Code">    <span class="comment"># Load the dataset</span>\n    <span class="variable">df</span> <span class="operator">=</span> <span class="function">pd.read_csv</span>(<span class="variable">data_file</span>)\n    \n    <span class="comment"># Convert date column to datetime</span>\n    <span class="variable">df</span>[<span class="string">'date'</span>] <span class="operator">=</span> <span class="function">pd.to_datetime</span>(<span class="variable">df</span>[<span class="string">'date'</span>])\n    \n    <span class="comment"># Calculate confirmation rate</span>\n    <span class="variable">df</span>[<span class="string">'confirmation_rate'</span>] <span class="operator">=</span> (<span class="variable">df</span>[<span class="string">'confirmed_cases'</span>] <span class="operator">/</span> <span class="variable">df</span>[<span class="string">'tested_cases'</span>]) <span class="operator">*</span> <span class="number">100</span></div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📈 Step 4: Calculate District Statistics</button><div class="section-content"><div class="step-description">Group data by district and calculate comprehensive statistics including mean, standard deviation, min, max values.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 4 - Statistical Analysis</div><button class="copy-btn" onclick="copyCode('step4Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step4Code">    <span class="comment"># Group by district and calculate statistics</span>\n    <span class="variable">district_stats</span> <span class="operator">=</span> <span class="variable">df</span>.<span class="function">groupby</span>(<span class="string">'district'</span>).<span class="function">agg</span>({\n        <span class="string">'confirmation_rate'</span>: [<span class="string">'mean'</span>, <span class="string">'std'</span>, <span class="string">'min'</span>, <span class="string">'max'</span>],\n        <span class="string">'confirmed_cases'</span>: <span class="string">'sum'</span>,\n        <span class="string">'tested_cases'</span>: <span class="string">'sum'</span>\n    })</div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📅 Step 5: Monthly Trend Analysis</button><div class="section-content"><div class="step-description">Calculate monthly trends by grouping data by time periods and districts to identify patterns over time.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 5 - Trend Analysis</div><button class="copy-btn" onclick="copyCode('step5Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step5Code">    <span class="comment"># Calculate trend analysis</span>\n    <span class="variable">monthly_trends</span> <span class="operator">=</span> <span class="variable">df</span>.<span class="function">groupby</span>([<span class="function">pd.Grouper</span>(<span class="variable">key</span><span class="operator">=</span><span class="string">'date'</span>, <span class="variable">freq</span><span class="operator">=</span><span class="string">'M'</span>), <span class="string">'district'</span>])[<span class="string">'confirmation_rate'</span>].<span class="function">mean</span>().<span class="function">reset_index</span>()</div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📤 Step 6: Return Analysis Results</button><div class="section-content"><div class="step-description">Return all calculated results in a structured dictionary format for easy access and further processing.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 6 - Return Results & Usage</div><button class="copy-btn" onclick="copyCode('step6Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step6Code">    <span class="keyword">return</span> {\n        <span class="string">'district_statistics'</span>: <span class="variable">district_stats</span>,\n        <span class="string">'monthly_trends'</span>: <span class="variable">monthly_trends</span>,\n        <span class="string">'overall_rate'</span>: <span class="variable">df</span>[<span class="string">'confirmation_rate'</span>].<span class="function">mean</span>()\n    }\n\n<span class="comment"># Example usage</span>\n<span class="variable">results</span> <span class="operator">=</span> <span class="function">analyze_malaria_confirmation</span>(<span class="string">'malaria_data_2024.csv'</span>)\n<span class="function">print</span>(<span class="string">f"Overall confirmation rate: {results['overall_rate']:.2f}%"</span>)</div></div></div></div></div>
+            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📊 Sample Output Results</button><div class="section-content"><div class="step-description">View the sample output generated by running the analysis code. Upload your results.png image to display your analysis results.</div><div class="result-image-section"><div class="result-image-frame"><input type="file" id="resultImageUpload" accept="image/*" onchange="displayResultImage(event)" style="display: none;"><div class="result-image-placeholder" id="resultImagePlaceholder" onclick="document.getElementById('resultImageUpload').click();"><div class="placeholder-icon">📊</div><div class="placeholder-text">Click to upload results.png</div><div class="placeholder-subtext">Upload your analysis output image</div></div><img id="uploadedResultImage" class="uploaded-result-image" style="display: none;" onclick="document.getElementById('resultImageUpload').click();"></div></div></div></div>`;
+        }
+
+        // Load analysis_code.md for Tab3
+        async function loadAnalysisCodeMarkdown() {
+            const loadingDiv = document.getElementById('templateLoadingMessage');
+            const errorDiv = document.getElementById('templateErrorMessage');
+            const contentDiv = document.getElementById('templateContent');
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            contentDiv.style.display = 'none';
+            try {
+                const response = await fetch('analysis_code.md');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const markdown = await response.text();
+                const parsed = parseMarkdownToSections(markdown);
+                contentDiv.innerHTML = parsed;
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            } catch (err) {
+                console.warn('analysis_code.md missing, using fallback visualization content', err);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                contentDiv.innerHTML = `<div class="content-text">Visualization content could not be loaded. Please ensure analysis_code.md is present.</div>`;
+                contentDiv.style.display = 'block';
+            }
         }
 
         function displayResultImage(event) {
@@ -779,252 +857,20 @@
                 reader.onload = function(e) {
                     const placeholder = document.getElementById('resultImagePlaceholder');
                     const uploadedImage = document.getElementById('uploadedResultImage');
-                    
                     if (placeholder && uploadedImage) {
-                        // Hide placeholder and show image
                         placeholder.style.display = 'none';
                         uploadedImage.src = e.target.result;
                         uploadedImage.style.display = 'block';
-                        
-                        // Optional: Add click handler to uploaded image to change it
-                        uploadedImage.onclick = function() {
-                            const upload = document.getElementById('resultImageUpload');
-                            if (upload) upload.click();
-                        };
+                        uploadedImage.onclick = function() { document.getElementById('resultImageUpload').click(); };
                     }
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        // Template Loading Functions
-        async function loadMarkdownFile(filename, tabId) {
-            const loadingMessage = document.getElementById(tabId + 'LoadingMessage');
-            const errorMessage = document.getElementById(tabId + 'ErrorMessage');
-            const contentDiv = document.getElementById(tabId + 'Content');
-            
-            // Hide all messages initially
-            if (loadingMessage) loadingMessage.style.display = 'none';
-            if (errorMessage) errorMessage.style.display = 'none';
-            if (contentDiv) contentDiv.style.display = 'none';
-            
-            // Show loading message
-            if (loadingMessage) loadingMessage.style.display = 'block';
-            
-            try {
-                // Try to read the file from the repository
-                const response = await fetch(filename);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const fileContent = await response.text();
-                console.log('Loaded file:', filename);
-                console.log('File content length:', fileContent.length);
-                
-                // Hide loading message
-                if (loadingMessage) loadingMessage.style.display = 'none';
-                
-                // Parse the markdown and create template
-                const parsedTemplate = parseMarkdownTemplate(fileContent);
-                console.log('Parsed template length:', parsedTemplate.length);
-                
-                if (contentDiv) {
-                    contentDiv.innerHTML = parsedTemplate;
-                    contentDiv.style.display = 'block';
-                    console.log('Content displayed in:', tabId);
-                }
-                
-            } catch (error) {
-                console.error('Error loading ' + filename + ':', error);
-                
-                // Hide loading message and show error
-                if (loadingMessage) loadingMessage.style.display = 'none';
-                if (errorMessage) errorMessage.style.display = 'block';
-            }
-        }
-
-        function parseMarkdownTemplate(content) {
-            const lines = content.split('\n');
-            let html = '';
-            let currentStep = null;
-            let currentContent = [];
-            let inCodeBlock = false;
-            let codeBlockContent = [];
-            let codeBlockLanguage = '';
-            let stepCounter = 0;
-            
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i];
-                
-                // Check for step headers (## Step)
-                if (line.startsWith('## ') && line.toLowerCase().includes('step')) {
-                    // Save previous step if exists
-                    if (currentStep) {
-                        html += createStepSection(currentStep, currentContent, stepCounter);
-                        stepCounter++;
-                    }
-                    
-                    // Start new step
-                    currentStep = line.replace('## ', '').trim();
-                    currentContent = [];
-                    inCodeBlock = false;
-                    codeBlockContent = [];
-                }
-                // Check for code block start
-                else if (line.startsWith('```')) {
-                    if (!inCodeBlock) {
-                        // Starting code block
-                        inCodeBlock = true;
-                        codeBlockLanguage = line.replace('```', '').trim();
-                        codeBlockContent = [];
-                    } else {
-                        // Ending code block
-                        inCodeBlock = false;
-                        currentContent.push({
-                            type: 'code',
-                            language: codeBlockLanguage,
-                            content: codeBlockContent.join('\n')
-                        });
-                        codeBlockContent = [];
-                        codeBlockLanguage = '';
-                    }
-                }
-                // Inside code block
-                else if (inCodeBlock) {
-                    codeBlockContent.push(line);
-                }
-                // Regular content
-                else if (currentStep && line.trim() !== '') {
-                    currentContent.push({
-                        type: 'text',
-                        content: line
-                    });
-                }
-            }
-            
-            // Add the last step
-            if (currentStep) {
-                html += createStepSection(currentStep, currentContent, stepCounter);
-            }
-            
-            return html;
-        }
-
-        function createStepSection(stepTitle, content, stepNumber) {
-            const sectionId = `templateStep${stepNumber}`;
-            const codeId = `templateCode${stepNumber}`;
-            const copyBtnId = `templateCopyBtn${stepNumber}`;
-            
-            let html = `
-                <div class="collapsible-section">
-                    <button class="section-toggle collapsed" onclick="toggleSection(this)">
-                        📋 ${stepTitle}
-                    </button>
-                    <div class="section-content">
-            `;
-            
-            // Add text content
-            const textContent = content.filter(item => item.type === 'text');
-            if (textContent.length > 0) {
-                html += `
-                    <div class="step-description">
-                        ${textContent.map(item => item.content).join('<br>')}
-                    </div>
-                `;
-            }
-            
-            // Add code blocks
-            const codeBlocks = content.filter(item => item.type === 'code');
-            codeBlocks.forEach((codeBlock, index) => {
-                const uniqueCodeId = `${codeId}_${index}`;
-                const uniqueCopyBtnId = `${copyBtnId}_${index}`;
-                
-                html += `
-                    <div class="code-section">
-                        <div class="code-header">
-                            <div class="code-title">
-                                <span>💻</span>
-                                ${stepTitle} - ${codeBlock.language || 'Code'}
-                            </div>
-                            <button class="copy-btn" onclick="copyCode('${uniqueCodeId}')" id="${uniqueCopyBtnId}">
-                                <span>📋</span>
-                                Copy Code
-                            </button>
-                        </div>
-                        <div class="code-container">
-                            <div class="code-content" id="${uniqueCodeId}">${highlightPythonCode(codeBlock.content)}</div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            html += `
-                    </div>
-                </div>
-            `;
-            
-            return html;
-        }
-
-        function highlightPythonCode(code) {
-            // Enhanced Python syntax highlighting with unique colors
-            let highlighted = code
-                // Escape HTML first
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                
-                // Keywords (purple)
-                .replace(/\b(import|from|def|class|if|else|elif|for|while|try|except|finally|return|with|as|break|continue|pass|yield|lambda|global|nonlocal|assert|del|raise|async|await)\b/g, '<span class="keyword">$1</span>')
-                
-                // Built-in functions (blue)
-                .replace(/\b(print|len|range|enumerate|zip|map|filter|sum|max|min|abs|round|sorted|reversed|any|all|type|isinstance|hasattr|getattr|setattr|delattr|dir|vars|id|hash|repr|str|int|float|bool|list|tuple|dict|set|frozenset|open|input)\b/g, '<span class="function">$1</span>')
-                
-                // Common libraries and modules (orange)
-                .replace(/\b(pd|np|plt|sns|px|go|os|sys|re|json|csv|datetime|time|math|random|collections|itertools|functools|pathlib)\b/g, '<span class="variable">$1</span>')
-                
-                // Function calls (cyan)
-                .replace(/\b(\w+)\s*\(/g, '<span style="color: #06b6d4; font-weight: 600;">$1</span>(')
-                
-                // Strings (green)
-                .replace(/'([^'\\]|\\.)*'/g, '<span class="string">$&</span>')
-                .replace(/"([^"\\]|\\.)*"/g, '<span class="string">$&</span>')
-                .replace(/'''[\s\S]*?'''/g, '<span class="string">$&</span>')
-                .replace(/"""[\s\S]*?"""/g, '<span class="string">$&</span>')
-                
-                // Numbers (red)
-                .replace(/\b(\d+\.?\d*)\b/g, '<span class="number">$1</span>')
-                
-                // Comments (gray)
-                .replace(/#.*$/gm, '<span class="comment">$&</span>')
-                
-                // Operators (purple)
-                .replace(/([=+\-*/%<>!&|^~]+)/g, '<span class="operator">$1</span>')
-                
-                // Method calls (light blue)
-                .replace(/\.(\w+)/g, '.<span style="color: #38bdf8; font-weight: 500;">$1</span>')
-                
-                // Constants and None, True, False (pink)
-                .replace(/\b(None|True|False|self|cls)\b/g, '<span style="color: #ec4899; font-weight: 600;">$1</span>');
-            
-            return highlighted;
-        }
-
-        // Initialize the page with all sections collapsed by default
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all content sections as collapsed by default
-            var sections = document.querySelectorAll('.section-content');
-            var buttons = document.querySelectorAll('.section-toggle');
-            
-            sections.forEach(function(section) {
-                if (section) section.classList.remove('expanded');
-            });
-            
-            buttons.forEach(function(button) {
-                if (button) button.classList.add('collapsed');
-            });
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('expanded'));
+            document.querySelectorAll('.section-toggle').forEach(b => b.classList.add('collapsed'));
         });
     </script>
 </body>

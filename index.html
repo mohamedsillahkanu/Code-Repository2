@@ -20,38 +20,6 @@
             padding: 20px;
         }
 
-        .header {
-            display: none;
-        }
-
-        .header-content {
-            display: none;
-        }
-
-        .logo-section {
-            display: none;
-        }
-
-        .logo-container {
-            display: none;
-        }
-
-        .logo-image {
-            display: none;
-        }
-
-        .title-section {
-            display: none;
-        }
-
-        .main-title {
-            display: none;
-        }
-
-        .subtitle {
-            display: none;
-        }
-
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -63,28 +31,12 @@
             border: 1px solid rgba(46, 125, 140, 0.2);
         }
 
-        /* Collapsible Tab Button */
-        .tab-toggle-btn {
-            display: none;
-        }
-
-        /* Tab Navigation - Always Visible */
         .tab-navigation {
             display: flex;
             flex-wrap: wrap;
             border-bottom: 3px solid #4A7BA7;
             margin-bottom: 40px;
             gap: 5px;
-            max-height: none;
-            overflow: visible;
-            opacity: 1;
-            transition: all 0.5s ease;
-        }
-
-        .tab-navigation.expanded {
-            max-height: none;
-            opacity: 1;
-            margin-bottom: 40px;
         }
 
         .tab-button {
@@ -97,25 +49,18 @@
             color: #4A7BA7;
             border-radius: 10px 10px 0 0;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
-            margin-bottom: -3px;
-            position: relative;
             font-family: 'Oswald', sans-serif;
         }
 
         .tab-button:hover {
             background: rgba(46, 125, 140, 0.2);
-            color: #4A7BA7;
         }
 
         .tab-button.active {
             background: #4A7BA7;
             color: #ffc107;
-            border-bottom: 3px solid #4A7BA7;
-            transform: translateY(3px);
         }
 
-        /* Tab Content */
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease-in;
@@ -135,7 +80,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Content Sections */
         .section-header {
             color: #4A7BA7;
             font-size: 2.2em;
@@ -149,13 +93,11 @@
             font-family: 'Oswald', sans-serif;
         }
 
-        /* Collapsible Sections */
         .collapsible-section {
             margin-bottom: 30px;
             border: 2px solid rgba(46, 125, 140, 0.2);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(46, 125, 140, 0.1);
         }
 
         .section-toggle {
@@ -168,15 +110,10 @@
             cursor: pointer;
             font-size: 1.3em;
             font-weight: 600;
-            transition: all 0.3s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'Oswald', sans-serif;
-        }
-
-        .section-toggle:hover {
-            background: linear-gradient(135deg, #4A7BA7, #4A7BA7);
         }
 
         .section-toggle::after {
@@ -198,30 +135,26 @@
         }
 
         .section-content.expanded {
-            max-height: none;
+            max-height: 3000px;
             padding: 20px;
         }
 
-        .content-text {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
+        .step-description {
+            background: rgba(46, 125, 140, 0.05);
             border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            color: #333;
+            font-size: 1em;
+            line-height: 1.6;
         }
 
-        /* Code Section Styling */
         .code-section {
-            margin: 30px 0;
+            margin: 20px 0;
             border: 2px solid rgba(46, 125, 140, 0.3);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(46, 125, 140, 0.1);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
         }
 
         .code-header {
@@ -231,38 +164,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 193, 7, 0.2);
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .code-title {
-            font-weight: 600;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .copy-btn {
             background: rgba(255, 193, 7, 0.2);
             border: 1px solid rgba(255, 193, 7, 0.3);
-            color: #4A7BA7;
+            color: #ffc107;
             padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 0.9em;
             font-weight: 600;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Oswald', sans-serif;
         }
 
         .copy-btn:hover {
             background: rgba(255, 193, 7, 0.3);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .copy-btn.copied {
@@ -273,8 +190,6 @@
 
         .code-container {
             background: #1e293b;
-            padding: 0;
-            position: relative;
             overflow-x: auto;
         }
 
@@ -285,128 +200,29 @@
             line-height: 1.6;
             color: #e2e8f0;
             white-space: pre;
-            overflow-x: auto;
         }
 
-        /* Syntax highlighting */
-        .keyword {
-            color: #7c3aed;
-            font-weight: 600;
-        }
+        .keyword { color: #c084fc; font-weight: 600; }
+        .function { color: #60a5fa; font-weight: 600; }
+        .string { color: #4ade80; }
+        .comment { color: #94a3b8; font-style: italic; }
+        .variable { color: #fbbf24; }
+        .number { color: #f87171; }
+        .operator { color: #a78bfa; }
 
-        .function {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-
-        .string {
-            color: #10b981;
-        }
-
-        .comment {
-            color: #64748b;
-            font-style: italic;
-        }
-
-        .variable {
-            color: #f59e0b;
-        }
-
-        .number {
-            color: #ef4444;
-        }
-
-        .operator {
-            color: #8b5cf6;
-        }
-
-        /* Output Section Styling */
-        .output-section {
-            margin: 30px 0;
-            border: 2px solid rgba(46, 125, 140, 0.3);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(46, 125, 140, 0.1);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .output-header {
-            background: linear-gradient(135deg, #4A7BA7, #4A7BA7);
-            color: #ffc107;
-            padding: 15px 20px;
-            font-weight: 600;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .output-container {
-            background: #f8fafc;
-            padding: 25px;
-            border-top: 1px solid rgba(46, 125, 140, 0.1);
-        }
-
-        .output-content {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 13px;
-            line-height: 1.5;
-            color: #374151;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            overflow-x: auto;
-            white-space: pre;
-        }
-
-        /* Step Description */
-        .step-description {
-            background: rgba(46, 125, 140, 0.05);
-            border-left: 4px solid #ffc107;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 0 10px 10px 0;
-            color: #4A7BA7;
-            font-size: 1em;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* Result Image Section */
         .result-image-section {
             display: flex;
             justify-content: center;
-            align-items: center;
             padding: 20px;
         }
 
         .result-image-frame {
             width: 100%;
-            max-width: 1000px;
-            min-height: 500px;
+            max-width: 800px;
             border: 3px solid #ffc107;
             border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(145deg, #ffffff, #fffaf0);
-            box-shadow: 
-                0 20px 40px rgba(46, 125, 140, 0.15),
-                inset 0 2px 4px rgba(255, 255, 255, 0.9),
-                inset 0 -2px 4px rgba(46, 125, 140, 0.1);
-            position: relative;
+            background: white;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .result-image-frame:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 25px 50px rgba(46, 125, 140, 0.2),
-                inset 0 2px 4px rgba(255, 255, 255, 0.9),
-                inset 0 -2px 4px rgba(46, 125, 140, 0.1);
         }
 
         .result-image-placeholder {
@@ -414,148 +230,66 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 500px;
+            height: 400px;
             text-align: center;
-            padding: 40px;
-            color: #ffc107;
-            border: 2px dashed #ffc107;
-            border-radius: 15px;
+            color: #4A7BA7;
+            border: 2px dashed #4A7BA7;
             margin: 10px;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .result-image-placeholder:hover {
-            background: rgba(46, 125, 140, 0.05);
-            border-color: #4A7BA7;
+            border-radius: 15px;
         }
 
         .uploaded-result-image {
             width: 100%;
             height: auto;
-            max-height: 90vh;
             display: block;
-            object-fit: contain;
             border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(46, 125, 140, 0.2);
         }
 
-        .image-upload-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .image-frame {
-            width: 100%;
-            max-width: 800px;
-            min-height: 400px;
-            border: 3px solid #4A7BA7;
-            border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(145deg, #ffffff, #f0f8ff);
-            box-shadow: 
-                0 20px 40px rgba(46, 125, 140, 0.15),
-                inset 0 2px 4px rgba(255, 255, 255, 0.9),
-                inset 0 -2px 4px rgba(46, 125, 140, 0.1);
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .image-frame:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 25px 50px rgba(46, 125, 140, 0.2),
-                inset 0 2px 4px rgba(255, 255, 255, 0.9),
-                inset 0 -2px 4px rgba(46, 125, 140, 0.1);
-        }
-
-        .image-placeholder {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
+        .loading-message, .error-message {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+
+        .loading-message {
             color: #4A7BA7;
-            border: 2px dashed #4A7BA7;
-            border-radius: 15px;
-            margin: 10px;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .image-placeholder:hover {
             background: rgba(46, 125, 140, 0.05);
-            border-color: #4A7BA7;
         }
 
-        .placeholder-icon {
-            font-size: 4em;
+        .error-message {
+            color: #dc3545;
+            background: rgba(220, 53, 69, 0.05);
+            border: 2px solid rgba(220, 53, 69, 0.2);
+        }
+
+        .content-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
             margin-bottom: 20px;
-            opacity: 0.7;
-        }
-
-        .placeholder-text {
-            font-size: 1.3em;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .placeholder-subtext {
-            font-size: 1em;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        .uploaded-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(46, 125, 140, 0.2);
         }
 
         @media (max-width: 768px) {
-            .dashboard-container {
-                padding: 30px;
-            }
-
-            .tab-navigation {
-                flex-direction: column;
-            }
-
-            .tab-button {
-                border-radius: 10px;
-                margin-bottom: 5px;
-                padding: 12px 20px;
-                font-size: 0.9em;
-            }
-
-            .tab-button.active {
-                transform: none;
-            }
+            .dashboard-container { padding: 20px; }
+            .tab-button { padding: 10px 15px; font-size: 0.9em; }
         }
     </style>
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Tab Navigation - Always Visible -->
-        <div class="tab-navigation" id="tabNavigation">
+        <div class="tab-navigation">
             <button class="tab-button active" onclick="openTab(event, 'overview')">Overview</button>
             <button class="tab-button" onclick="openTab(event, 'tab2')">Malaria Analysis Code</button>
             <button class="tab-button" onclick="openTab(event, 'tab3')">Data Visualization</button>
             <button class="tab-button" onclick="openTab(event, 'tab4')">Reports & Export</button>
         </div>
 
-        <!-- Tab Contents -->
         <div id="overview" class="tab-content active">
             <div class="section-header">Code Repository</div>
-            
-            <!-- Code Repository Introduction -->
             <div class="content-text">
                 <strong>Malaria Data Analysis Code Repository</strong><br>
                 This system provides a comprehensive collection of Python scripts and analysis tools designed specifically for the National Malaria Control Programme (NMCP) in Sierra Leone. 
@@ -563,312 +297,217 @@
             </div>
         </div>
 
-        <!-- Tab 2 - Dynamically loads from malaria-analysis.md -->
         <div id="tab2" class="tab-content">
             <div class="section-header">Malaria Data Analysis Code</div>
-            <div id="tab2LoadingMsg" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Loading analysis code from repository...</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Reading malaria_analysis.md file</div>
-                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
+            <div id="tab2Loading" class="loading-message" style="display: none;">
+                <div>📂 Loading analysis code from repository...</div>
+                <div style="margin-top: 10px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
             </div>
-            <div id="tab2ErrorMsg" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load malaria-analysis.md</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Please ensure the file exists in the main repository directory</div>
-                <button onclick="loadMalariaAnalysisMarkdown()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">🔄 Retry Loading</button>
+            <div id="tab2Error" class="error-message" style="display: none;">
+                ❌ Could not load malaria-analysis.md. Please ensure the file exists.
+                <br><button onclick="loadMalariaAnalysis()" style="margin-top: 10px; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer;">Retry</button>
             </div>
-            <div id="tab2Content" style="display: none;"></div>
+            <div id="tab2Content"></div>
         </div>
 
-        <!-- Tab 3 - Data Visualization Template (loads from analysis_code.md) -->
         <div id="tab3" class="tab-content">
             <div class="section-header">Data Visualization</div>
-            
-            <div class="collapsible-section">
-                <button class="section-toggle collapsed" onclick="toggleSection(this)">
-                    📊 Data Visualization Template
-                </button>
-                <div class="section-content">
-                    <div class="content-text">
-                        <strong>Malaria Data Visualization Template</strong><br>
-                        This section automatically reads and parses your analysis_code.md file from the repository when you open this tab. 
-                        It creates collapsible sections based on markdown headers (## Step) and applies Python syntax highlighting 
-                        to code blocks with unique colors for imports, functions, variables, and other Python elements.
-                    </div>
-                </div>
+            <div id="tab3Loading" class="loading-message" style="display: none;">
+                <div>📂 Loading visualization template...</div>
+                <div style="margin-top: 10px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
             </div>
-
-            <div id="templateLoadingMessage" style="display: none; text-align: center; padding: 30px; color: #4A7BA7; background: rgba(46, 125, 140, 0.05); border-radius: 15px; margin: 20px 0;">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">📂 Auto-loading template from repository...</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Reading analysis_code.md file</div>
-                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
+            <div id="tab3Error" class="error-message" style="display: none;">
+                ❌ Could not load analysis_code.md. Please ensure the file exists.
             </div>
-            <div id="templateErrorMessage" style="display: none; text-align: center; padding: 30px; color: #dc3545; background: rgba(220, 53, 69, 0.05); border-radius: 15px; margin: 20px 0; border: 2px solid rgba(220, 53, 69, 0.2);">
-                <div style="font-size: 1.4em; margin-bottom: 15px;">❌ Could not auto-load analysis_code.md</div>
-                <div style="font-size: 1.1em; margin-bottom: 10px;">Please ensure the file exists in the main repository directory</div>
-                <button onclick="loadAnalysisCodeMarkdown()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px;">🔄 Retry Loading</button>
-            </div>
-            <div id="templateContent" style="display: none;"></div>
+            <div id="tab3Content"></div>
         </div>
 
-        <!-- Tab 4 -->
         <div id="tab4" class="tab-content">
             <div class="section-header">Reports & Export</div>
-            <div class="content-text">
-                This tab will contain report generation and data export functionality.
-            </div>
+            <div class="content-text">This tab will contain report generation and data export functionality.</div>
         </div>
     </div>
 
     <script>
-        // Core functions
         function openTab(evt, tabName) {
-            var tabcontents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabcontents.length; i++) {
-                tabcontents[i].classList.remove("active");
-            }
-            var tabbuttons = document.getElementsByClassName("tab-button");
-            for (var i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].classList.remove("active");
-            }
-            var targetTab = document.getElementById(tabName);
-            if (targetTab) targetTab.classList.add("active");
-            if (evt && evt.currentTarget) evt.currentTarget.classList.add("active");
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
             
-            // Load content when tabs are opened
-            if (tabName === 'tab2') {
-                const contentDiv = document.getElementById('tab2Content');
-                if (contentDiv && contentDiv.innerHTML.trim() === '') {
-                    loadMalariaAnalysisMarkdown();
-                }
-            }
-            if (tabName === 'tab3') {
-                const templateDiv = document.getElementById('templateContent');
-                if (templateDiv && templateDiv.innerHTML.trim() === '') {
-                    loadAnalysisCodeMarkdown();
-                }
-            }
+            if (tabName === 'tab2' && document.getElementById('tab2Content').innerHTML === '') loadMalariaAnalysis();
+            if (tabName === 'tab3' && document.getElementById('tab3Content').innerHTML === '') loadAnalysisCode();
         }
 
-        function toggleSection(button) {
-            if (!button || !button.nextElementSibling) return;
-            var content = button.nextElementSibling;
-            var isCollapsed = content.classList.contains("expanded");
-            if (isCollapsed) {
-                content.classList.remove("expanded");
-                button.classList.add("collapsed");
-            } else {
-                content.classList.add("expanded");
-                button.classList.remove("collapsed");
-            }
+        function toggleSection(btn) {
+            const content = btn.nextElementSibling;
+            const isCollapsed = content.classList.contains('expanded');
+            content.classList.toggle('expanded', !isCollapsed);
+            btn.classList.toggle('collapsed', isCollapsed);
         }
 
         function copyCode(elementId) {
             const codeElement = document.getElementById(elementId);
-            if (!codeElement) return;
-            const textContent = codeElement.innerText || codeElement.textContent;
-            // Find associated copy button dynamically
-            let copyBtn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
-            if (!copyBtn) {
-                copyBtn = codeElement.closest('.code-section')?.querySelector('.copy-btn');
-            }
-            navigator.clipboard.writeText(textContent).then(function() {
-                if (copyBtn) {
-                    copyBtn.innerHTML = '<span>✅</span> Copied!';
-                    copyBtn.classList.add('copied');
-                    setTimeout(function() {
-                        copyBtn.innerHTML = '<span>📋</span> Copy Code';
-                        copyBtn.classList.remove('copied');
-                    }, 2000);
-                }
-            }).catch(function(err) {
-                console.error('Copy failed:', err);
+            const text = codeElement.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.remove('copied');
+                }, 2000);
             });
         }
 
-        // Syntax highlighter (same as original)
         function highlightPythonCode(code) {
-            let highlighted = code
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/\b(import|from|def|class|if|else|elif|for|while|try|except|finally|return|with|as|break|continue|pass|yield|lambda|global|nonlocal|assert|del|raise|async|await)\b/g, '<span class="keyword">$1</span>')
-                .replace(/\b(print|len|range|enumerate|zip|map|filter|sum|max|min|abs|round|sorted|reversed|any|all|type|isinstance|hasattr|getattr|setattr|delattr|dir|vars|id|hash|repr|str|int|float|bool|list|tuple|dict|set|frozenset|open|input)\b/g, '<span class="function">$1</span>')
-                .replace(/\b(pd|np|plt|sns|px|go|os|sys|re|json|csv|datetime|time|math|random|collections|itertools|functools|pathlib)\b/g, '<span class="variable">$1</span>')
-                .replace(/\b(\w+)\s*\(/g, '<span style="color: #06b6d4; font-weight: 600;">$1</span>(')
+            return code
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/\b(import|from|def|class|if|else|elif|for|while|return|with|as|break|continue|pass|lambda|try|except|finally)\b/g, '<span class="keyword">$1</span>')
+                .replace(/\b(print|len|range|str|int|float|list|dict|set|tuple|open|read|write|append|split|join|format)\b/g, '<span class="function">$1</span>')
+                .replace(/\b(pd|np|plt|sns|Path|tabulate)\b/g, '<span class="variable">$1</span>')
                 .replace(/'([^'\\]|\\.)*'/g, '<span class="string">$&</span>')
                 .replace(/"([^"\\]|\\.)*"/g, '<span class="string">$&</span>')
-                .replace(/'''[\s\S]*?'''/g, '<span class="string">$&</span>')
-                .replace(/"""[\s\S]*?"""/g, '<span class="string">$&</span>')
                 .replace(/\b(\d+\.?\d*)\b/g, '<span class="number">$1</span>')
                 .replace(/#.*$/gm, '<span class="comment">$&</span>')
-                .replace(/([=+\-*/%<>!&|^~]+)/g, '<span class="operator">$1</span>')
-                .replace(/\.(\w+)/g, '.<span style="color: #38bdf8; font-weight: 500;">$1</span>')
-                .replace(/\b(None|True|False|self|cls)\b/g, '<span style="color: #ec4899; font-weight: 600;">$1</span>');
-            return highlighted;
+                .replace(/([=+\-*/%<>!&|]+)/g, '<span class="operator">$1</span>');
         }
 
-        // Generic markdown parser for code blocks (supports steps with "## Step")
-        function parseMarkdownToSections(content) {
-            const lines = content.split('\n');
+        async function loadMalariaAnalysis() {
+            const loading = document.getElementById('tab2Loading');
+            const error = document.getElementById('tab2Error');
+            const content = document.getElementById('tab2Content');
+            
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            content.innerHTML = '';
+            
+            try {
+                const response = await fetch('malaria-analysis.md');
+                if (!response.ok) throw new Error('File not found');
+                const markdown = await response.text();
+                content.innerHTML = parseMarkdown(markdown);
+                loading.style.display = 'none';
+            } catch (err) {
+                loading.style.display = 'none';
+                error.style.display = 'block';
+                content.innerHTML = '<div class="content-text">⚠️ Could not load malaria-analysis.md. Please create this file in the same directory.</div>';
+            }
+        }
+
+        async function loadAnalysisCode() {
+            const loading = document.getElementById('tab3Loading');
+            const error = document.getElementById('tab3Error');
+            const content = document.getElementById('tab3Content');
+            
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            content.innerHTML = '';
+            
+            try {
+                const response = await fetch('analysis_code.md');
+                if (!response.ok) throw new Error('File not found');
+                const markdown = await response.text();
+                content.innerHTML = parseMarkdown(markdown);
+                loading.style.display = 'none';
+            } catch (err) {
+                loading.style.display = 'none';
+                error.style.display = 'block';
+                content.innerHTML = '<div class="content-text">⚠️ Could not load analysis_code.md. Please create this file in the same directory.</div>';
+            }
+        }
+
+        function parseMarkdown(markdown) {
+            const lines = markdown.split('\n');
             let html = '';
-            let currentStep = null;
-            let currentContent = [];
+            let currentStep = '';
+            let currentDescription = '';
+            let currentCode = '';
             let inCodeBlock = false;
-            let codeBlockContent = [];
             let stepCounter = 0;
             
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
-                if (line.startsWith('## ') && line.toLowerCase().includes('step')) {
+                
+                if (line.startsWith('## Step')) {
                     if (currentStep) {
-                        html += createStepSectionFromParsed(currentStep, currentContent, stepCounter);
+                        html += buildStepSection(stepCounter, currentStep, currentDescription, currentCode);
                         stepCounter++;
                     }
                     currentStep = line.replace('## ', '').trim();
-                    currentContent = [];
+                    currentDescription = '';
+                    currentCode = '';
                     inCodeBlock = false;
-                    codeBlockContent = [];
-                } else if (line.startsWith('```')) {
-                    if (!inCodeBlock) {
-                        inCodeBlock = true;
-                        codeBlockContent = [];
-                    } else {
-                        inCodeBlock = false;
-                        currentContent.push({
-                            type: 'code',
-                            content: codeBlockContent.join('\n')
-                        });
-                    }
-                } else if (inCodeBlock) {
-                    codeBlockContent.push(line);
-                } else if (currentStep && line.trim() !== '') {
-                    currentContent.push({
-                        type: 'text',
-                        content: line
-                    });
+                }
+                else if (line.startsWith('```') && line.includes('python')) {
+                    inCodeBlock = true;
+                    currentCode = '';
+                }
+                else if (line.startsWith('```') && inCodeBlock) {
+                    inCodeBlock = false;
+                }
+                else if (inCodeBlock) {
+                    currentCode += line + '\n';
+                }
+                else if (currentStep && line.trim() !== '' && !line.startsWith('```')) {
+                    if (currentDescription) currentDescription += '<br>';
+                    currentDescription += line;
                 }
             }
+            
             if (currentStep) {
-                html += createStepSectionFromParsed(currentStep, currentContent, stepCounter);
+                html += buildStepSection(stepCounter, currentStep, currentDescription, currentCode);
             }
+            
             return html;
         }
 
-        function createStepSectionFromParsed(stepTitle, content, stepNumber) {
+        function buildStepSection(id, stepTitle, description, code) {
+            const stepId = `step_${id}`;
+            const codeId = `code_${id}`;
+            
             let html = `<div class="collapsible-section">
                 <button class="section-toggle collapsed" onclick="toggleSection(this)">
                     📋 ${stepTitle}
                 </button>
                 <div class="section-content">`;
             
-            const textItems = content.filter(item => item.type === 'text');
-            if (textItems.length) {
-                html += `<div class="step-description">${textItems.map(t => t.content).join('<br>')}</div>`;
+            if (description && description.trim()) {
+                html += `<div class="step-description">${description}</div>`;
             }
             
-            const codeBlocks = content.filter(item => item.type === 'code');
-            codeBlocks.forEach((block, idx) => {
-                const uniqueId = `dynamicCode_${stepNumber}_${idx}`;
-                html += `
-                    <div class="code-section">
-                        <div class="code-header">
-                            <div class="code-title"><span>💻</span> ${stepTitle} - Code</div>
-                            <button class="copy-btn" onclick="copyCode('${uniqueId}')">📋 Copy Code</button>
-                        </div>
-                        <div class="code-container">
-                            <div class="code-content" id="${uniqueId}">${highlightPythonCode(block.content)}</div>
-                        </div>
+            if (code && code.trim()) {
+                html += `<div class="code-section">
+                    <div class="code-header">
+                        <div class="code-title">💻 Code</div>
+                        <button class="copy-btn" onclick="copyCode('${codeId}')">📋 Copy Code</button>
                     </div>
-                `;
-            });
+                    <div class="code-container">
+                        <div class="code-content" id="${codeId}">${highlightPythonCode(code)}</div>
+                    </div>
+                </div>`;
+            }
+            
             html += `</div></div>`;
             return html;
         }
 
-        // Load malaria_analysis.md for Tab2
-        async function loadMalariaAnalysisMarkdown() {
-            const loadingDiv = document.getElementById('tab2LoadingMsg');
-            const errorDiv = document.getElementById('tab2ErrorMsg');
-            const contentDiv = document.getElementById('tab2Content');
-            
-            loadingDiv.style.display = 'block';
-            errorDiv.style.display = 'none';
-            contentDiv.style.display = 'none';
-            
-            try {
-                const response = await fetch('malaria_analysis.md');
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const markdown = await response.text();
-                const parsedHtml = parseMarkdownToSections(markdown);
-                contentDiv.innerHTML = parsedHtml;
-                loadingDiv.style.display = 'none';
-                contentDiv.style.display = 'block';
-            } catch (err) {
-                console.warn('Could not load malaria-analysis.md, falling back to embedded content from original html', err);
-                loadingDiv.style.display = 'none';
-                errorDiv.style.display = 'block';
-                // Fallback: embed original hardcoded content exactly as before, using same structure and steps (to reproduce original output)
-                contentDiv.innerHTML = getEmbeddedMalariaAnalysisFallback();
-                contentDiv.style.display = 'block';
-            }
-        }
-
-        // Fallback reproduces the exact original tab2 code from original HTML
-        function getEmbeddedMalariaAnalysisFallback() {
-            return `
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📋 Step 1: Import Required Libraries</button><div class="section-content"><div class="step-description">Import all necessary Python libraries for data processing, analysis, and visualization.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 1 - Library Imports</div><button class="copy-btn" onclick="copyCode('step1Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step1Code"><span class="comment"># Import necessary libraries</span>\n<span class="keyword">import</span> <span class="function">pandas</span> <span class="keyword">as</span> <span class="variable">pd</span>\n<span class="keyword">import</span> <span class="function">numpy</span> <span class="keyword">as</span> <span class="variable">np</span>\n<span class="keyword">import</span> <span class="function">matplotlib.pyplot</span> <span class="keyword">as</span> <span class="variable">plt</span>\n<span class="keyword">import</span> <span class="function">seaborn</span> <span class="keyword">as</span> <span class="variable">sns</span>\n<span class="keyword">from</span> <span class="function">datetime</span> <span class="keyword">import</span> <span class="function">datetime</span></div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">🔬 Step 2: Define Main Analysis Function</button><div class="section-content"><div class="step-description">Create the main function that will process malaria confirmation data and calculate key statistics.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 2 - Function Definition</div><button class="copy-btn" onclick="copyCode('step2Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step2Code"><span class="keyword">def</span> <span class="function">analyze_malaria_confirmation</span>(<span class="variable">data_file</span>):\n    <span class="string">"""\n    Analyze malaria confirmation rates across districts and time periods\n    \n    Parameters:\n    data_file (str): Path to the malaria data CSV file\n    \n    Returns:\n    dict: Analysis results including trends and statistics\n    """</span></div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📊 Step 3: Load and Process Data</button><div class="section-content"><div class="step-description">Load the CSV data file and perform initial data processing including date conversion and confirmation rate calculation.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 3 - Data Processing</div><button class="copy-btn" onclick="copyCode('step3Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step3Code">    <span class="comment"># Load the dataset</span>\n    <span class="variable">df</span> <span class="operator">=</span> <span class="function">pd.read_csv</span>(<span class="variable">data_file</span>)\n    \n    <span class="comment"># Convert date column to datetime</span>\n    <span class="variable">df</span>[<span class="string">'date'</span>] <span class="operator">=</span> <span class="function">pd.to_datetime</span>(<span class="variable">df</span>[<span class="string">'date'</span>])\n    \n    <span class="comment"># Calculate confirmation rate</span>\n    <span class="variable">df</span>[<span class="string">'confirmation_rate'</span>] <span class="operator">=</span> (<span class="variable">df</span>[<span class="string">'confirmed_cases'</span>] <span class="operator">/</span> <span class="variable">df</span>[<span class="string">'tested_cases'</span>]) <span class="operator">*</span> <span class="number">100</span></div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📈 Step 4: Calculate District Statistics</button><div class="section-content"><div class="step-description">Group data by district and calculate comprehensive statistics including mean, standard deviation, min, max values.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 4 - Statistical Analysis</div><button class="copy-btn" onclick="copyCode('step4Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step4Code">    <span class="comment"># Group by district and calculate statistics</span>\n    <span class="variable">district_stats</span> <span class="operator">=</span> <span class="variable">df</span>.<span class="function">groupby</span>(<span class="string">'district'</span>).<span class="function">agg</span>({\n        <span class="string">'confirmation_rate'</span>: [<span class="string">'mean'</span>, <span class="string">'std'</span>, <span class="string">'min'</span>, <span class="string">'max'</span>],\n        <span class="string">'confirmed_cases'</span>: <span class="string">'sum'</span>,\n        <span class="string">'tested_cases'</span>: <span class="string">'sum'</span>\n    })</div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📅 Step 5: Monthly Trend Analysis</button><div class="section-content"><div class="step-description">Calculate monthly trends by grouping data by time periods and districts to identify patterns over time.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 5 - Trend Analysis</div><button class="copy-btn" onclick="copyCode('step5Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step5Code">    <span class="comment"># Calculate trend analysis</span>\n    <span class="variable">monthly_trends</span> <span class="operator">=</span> <span class="variable">df</span>.<span class="function">groupby</span>([<span class="function">pd.Grouper</span>(<span class="variable">key</span><span class="operator">=</span><span class="string">'date'</span>, <span class="variable">freq</span><span class="operator">=</span><span class="string">'M'</span>), <span class="string">'district'</span>])[<span class="string">'confirmation_rate'</span>].<span class="function">mean</span>().<span class="function">reset_index</span>()</div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📤 Step 6: Return Analysis Results</button><div class="section-content"><div class="step-description">Return all calculated results in a structured dictionary format for easy access and further processing.</div><div class="code-section"><div class="code-header"><div class="code-title"><span>💻</span> Step 6 - Return Results & Usage</div><button class="copy-btn" onclick="copyCode('step6Code')">📋 Copy Code</button></div><div class="code-container"><div class="code-content" id="step6Code">    <span class="keyword">return</span> {\n        <span class="string">'district_statistics'</span>: <span class="variable">district_stats</span>,\n        <span class="string">'monthly_trends'</span>: <span class="variable">monthly_trends</span>,\n        <span class="string">'overall_rate'</span>: <span class="variable">df</span>[<span class="string">'confirmation_rate'</span>].<span class="function">mean</span>()\n    }\n\n<span class="comment"># Example usage</span>\n<span class="variable">results</span> <span class="operator">=</span> <span class="function">analyze_malaria_confirmation</span>(<span class="string">'malaria_data_2024.csv'</span>)\n<span class="function">print</span>(<span class="string">f"Overall confirmation rate: {results['overall_rate']:.2f}%"</span>)</div></div></div></div></div>
-            <div class="collapsible-section"><button class="section-toggle collapsed" onclick="toggleSection(this)">📊 Sample Output Results</button><div class="section-content"><div class="step-description">View the sample output generated by running the analysis code. Upload your results.png image to display your analysis results.</div><div class="result-image-section"><div class="result-image-frame"><input type="file" id="resultImageUpload" accept="image/*" onchange="displayResultImage(event)" style="display: none;"><div class="result-image-placeholder" id="resultImagePlaceholder" onclick="document.getElementById('resultImageUpload').click();"><div class="placeholder-icon">📊</div><div class="placeholder-text">Click to upload results.png</div><div class="placeholder-subtext">Upload your analysis output image</div></div><img id="uploadedResultImage" class="uploaded-result-image" style="display: none;" onclick="document.getElementById('resultImageUpload').click();"></div></div></div></div>`;
-        }
-
-        // Load analysis_code.md for Tab3
-        async function loadAnalysisCodeMarkdown() {
-            const loadingDiv = document.getElementById('templateLoadingMessage');
-            const errorDiv = document.getElementById('templateErrorMessage');
-            const contentDiv = document.getElementById('templateContent');
-            loadingDiv.style.display = 'block';
-            errorDiv.style.display = 'none';
-            contentDiv.style.display = 'none';
-            try {
-                const response = await fetch('analysis_code.md');
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const markdown = await response.text();
-                const parsed = parseMarkdownToSections(markdown);
-                contentDiv.innerHTML = parsed;
-                loadingDiv.style.display = 'none';
-                contentDiv.style.display = 'block';
-            } catch (err) {
-                console.warn('analysis_code.md missing, using fallback visualization content', err);
-                loadingDiv.style.display = 'none';
-                errorDiv.style.display = 'block';
-                contentDiv.innerHTML = `<div class="content-text">Visualization content could not be loaded. Please ensure analysis_code.md is present.</div>`;
-                contentDiv.style.display = 'block';
-            }
-        }
-
         function displayResultImage(event) {
             const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
+            if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const placeholder = document.getElementById('resultImagePlaceholder');
-                    const uploadedImage = document.getElementById('uploadedResultImage');
-                    if (placeholder && uploadedImage) {
-                        placeholder.style.display = 'none';
-                        uploadedImage.src = e.target.result;
-                        uploadedImage.style.display = 'block';
-                        uploadedImage.onclick = function() { document.getElementById('resultImageUpload').click(); };
-                    }
+                    document.getElementById('resultImagePlaceholder').style.display = 'none';
+                    const img = document.getElementById('uploadedResultImage');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.section-content').forEach(s => s.classList.remove('expanded'));
             document.querySelectorAll('.section-toggle').forEach(b => b.classList.add('collapsed'));
         });

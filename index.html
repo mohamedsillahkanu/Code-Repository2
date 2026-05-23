@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malaria Program Review (MPR) - Code Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,11 +12,75 @@
         }
 
         body {
-            font-family: 'Oswald', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #4A7BA7 0%, #4A7BA7 50%, #ffffff 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0066cc 0%, #004499 50%, #ffffff 100%);
             min-height: 100vh;
             color: #333;
-            padding: 20px;
+            padding: 0;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #0066cc;
+            padding: 25px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 102, 204, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .logo-container {
+            width: 140px;
+            height: 90px;
+            border: 2px solid #0066cc;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-3px);
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+        .title-section {
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 3em;
+            color: #0066cc;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 102, 204, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #004499;
+            font-weight: 400;
         }
 
         .dashboard-container {
@@ -27,40 +90,92 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 50px;
-            box-shadow: 0 15px 40px rgba(46, 125, 140, 0.2);
-            border: 1px solid rgba(46, 125, 140, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.2);
+            border: 1px solid rgba(0, 102, 204, 0.2);
         }
 
+        /* Collapsible Tab Button */
+        .tab-toggle-btn {
+            background: linear-gradient(135deg, #004499, #0066cc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 68, 153, 0.3);
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            width: 250px;
+        }
+
+        .tab-toggle-btn:hover {
+            background: linear-gradient(135deg, #0066cc, #004499);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        .tab-toggle-btn .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .tab-toggle-btn.collapsed .arrow {
+            transform: rotate(-90deg);
+        }
+
+        /* Tab Navigation */
         .tab-navigation {
             display: flex;
             flex-wrap: wrap;
-            border-bottom: 3px solid #4A7BA7;
+            border-bottom: 3px solid #0066cc;
             margin-bottom: 40px;
             gap: 5px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .tab-navigation.expanded {
+            max-height: 200px;
+            opacity: 1;
+            margin-bottom: 40px;
         }
 
         .tab-button {
-            background: rgba(46, 125, 140, 0.1);
+            background: rgba(0, 102, 204, 0.1);
             border: none;
             padding: 15px 25px;
             cursor: pointer;
             font-size: 1em;
             font-weight: 600;
-            color: #4A7BA7;
+            color: #004499;
             border-radius: 10px 10px 0 0;
             transition: all 0.3s ease;
-            font-family: 'Oswald', sans-serif;
+            border: 2px solid transparent;
+            margin-bottom: -3px;
+            position: relative;
         }
 
         .tab-button:hover {
-            background: rgba(46, 125, 140, 0.2);
+            background: rgba(0, 102, 204, 0.2);
+            color: #0066cc;
         }
 
         .tab-button.active {
-            background: #4A7BA7;
-            color: #ffc107;
+            background: #0066cc;
+            color: white;
+            border-bottom: 3px solid #0066cc;
+            transform: translateY(3px);
         }
 
+        /* Tab Content */
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease-in;
@@ -80,29 +195,31 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Content Sections */
         .section-header {
-            color: #4A7BA7;
+            color: #0066cc;
             font-size: 2.2em;
             font-weight: 700;
             margin-bottom: 30px;
             text-align: center;
             padding: 20px;
-            background: rgba(46, 125, 140, 0.1);
+            background: rgba(0, 102, 204, 0.1);
             border-radius: 15px;
-            border-left: 5px solid #ffc107;
-            font-family: 'Oswald', sans-serif;
+            border-left: 5px solid #0066cc;
         }
 
+        /* Collapsible Sections */
         .collapsible-section {
             margin-bottom: 30px;
-            border: 2px solid rgba(46, 125, 140, 0.2);
+            border: 2px solid rgba(0, 102, 204, 0.2);
             border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
         }
 
         .section-toggle {
-            background: linear-gradient(135deg, #4A7BA7, #4A7BA7);
-            color: #ffc107;
+            background: linear-gradient(135deg, #0066cc, #004499);
+            color: white;
             border: none;
             padding: 20px;
             width: 100%;
@@ -110,10 +227,14 @@
             cursor: pointer;
             font-size: 1.3em;
             font-weight: 600;
+            transition: all 0.3s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Oswald', sans-serif;
+        }
+
+        .section-toggle:hover {
+            background: linear-gradient(135deg, #004499, #0066cc);
         }
 
         .section-toggle::after {
@@ -135,61 +256,80 @@
         }
 
         .section-content.expanded {
-            max-height: 3000px;
+            max-height: none;
             padding: 20px;
         }
 
-        .step-description {
-            background: rgba(46, 125, 140, 0.05);
-            border-left: 4px solid #ffc107;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 0 10px 10px 0;
-            color: #333;
-            font-size: 1em;
+        .content-text {
+            font-size: 1.1em;
             line-height: 1.6;
+            color: #333;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border-left: 4px solid #0066cc;
         }
 
+        /* Code Section Styling */
         .code-section {
-            margin: 20px 0;
-            border: 2px solid rgba(46, 125, 140, 0.3);
+            margin: 30px 0;
+            border: 2px solid rgba(59, 130, 246, 0.3);
             border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .code-header {
-            background: linear-gradient(135deg, #4A7BA7, #4A7BA7);
-            color: #ffc107;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .copy-btn {
-            background: rgba(255, 193, 7, 0.2);
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            color: #ffc107;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
             padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 0.9em;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .copy-btn:hover {
-            background: rgba(255, 193, 7, 0.3);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .copy-btn.copied {
             background: #10b981;
             border-color: #10b981;
-            color: white;
         }
 
         .code-container {
             background: #1e293b;
+            padding: 0;
+            position: relative;
             overflow-x: auto;
         }
 
@@ -200,29 +340,120 @@
             line-height: 1.6;
             color: #e2e8f0;
             white-space: pre;
+            overflow-x: auto;
         }
 
-        .keyword { color: #c084fc; font-weight: 600; }
-        .function { color: #60a5fa; font-weight: 600; }
-        .string { color: #4ade80; }
-        .comment { color: #94a3b8; font-style: italic; }
-        .variable { color: #fbbf24; }
-        .number { color: #f87171; }
-        .operator { color: #a78bfa; }
+        /* Syntax highlighting */
+        .keyword {
+            color: #c084fc;
+            font-weight: 600;
+        }
 
+        .function {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .string {
+            color: #4ade80;
+        }
+
+        .comment {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .variable {
+            color: #fbbf24;
+        }
+
+        .number {
+            color: #f87171;
+        }
+
+        .operator {
+            color: #a78bfa;
+        }
+
+        /* Output Section Styling */
+        .output-section {
+            margin: 30px 0;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .output-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .output-container {
+            background: #f8fafc;
+            padding: 25px;
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .output-content {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #374151;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* Step Description */
+        .step-description {
+            background: rgba(0, 102, 204, 0.05);
+            border-left: 4px solid #0066cc;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            color: #004499;
+            font-size: 1em;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Result Image Section */
         .result-image-section {
             display: flex;
             justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
         .result-image-frame {
             width: 100%;
-            max-width: 800px;
-            border: 3px solid #ffc107;
+            max-width: 1000px;
+            min-height: 500px;
+            border: 3px solid #10b981;
             border-radius: 20px;
-            background: white;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f0fff4);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+            position: relative;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .result-image-frame:hover {
+            transform: translateY(-5px);
         }
 
         .result-image-placeholder {
@@ -230,15 +461,84 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 400px;
+            height: 500px;
             text-align: center;
-            color: #4A7BA7;
-            border: 2px dashed #4A7BA7;
-            margin: 10px;
+            padding: 40px;
+            color: #10b981;
+            border: 2px dashed #10b981;
             border-radius: 15px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .uploaded-result-image {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            display: block;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .image-upload-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-frame {
+            width: 100%;
+            max-width: 800px;
+            min-height: 400px;
+            border: 3px solid #0066cc;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f0f8ff);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-frame:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            text-align: center;
+            padding: 40px;
+            color: #0066cc;
+            border: 2px dashed #0066cc;
+            border-radius: 15px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .placeholder-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .placeholder-text {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .placeholder-subtext {
+            font-size: 1em;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .uploaded-image {
             width: 100%;
             height: auto;
             display: block;
@@ -253,8 +553,8 @@
         }
 
         .loading-message {
-            color: #4A7BA7;
-            background: rgba(46, 125, 140, 0.05);
+            color: #0066cc;
+            background: rgba(0, 102, 204, 0.05);
         }
 
         .error-message {
@@ -263,166 +563,271 @@
             border: 2px solid rgba(220, 53, 69, 0.2);
         }
 
-        .content-text {
-            font-size: 1.1em;
-            line-height: 1.6;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            border-left: 4px solid #ffc107;
-            margin-bottom: 20px;
-        }
-
         @media (max-width: 768px) {
-            .dashboard-container { padding: 20px; }
-            .tab-button { padding: 10px 15px; font-size: 0.9em; }
+            .main-title { font-size: 2.2em; }
+            .subtitle { font-size: 1.2em; }
+            .logo-section { justify-content: center; }
+            .logo-container { width: 120px; height: 80px; }
+            .dashboard-container { padding: 30px; }
+            .tab-navigation { flex-direction: column; }
+            .tab-button { border-radius: 10px; margin-bottom: 5px; padding: 12px 20px; font-size: 0.9em; }
+            .tab-button.active { transform: none; }
+            .tab-toggle-btn { width: 200px; padding: 12px 20px; font-size: 1em; }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-container">
+                    <img src="NMCP.png" alt="NMCP Logo" class="logo-image">
+                </div>
+                <div class="logo-container">
+                    <img src="WHO.png" alt="WHO Logo" class="logo-image">
+                </div>
+                <div class="logo-container">
+                    <img src="CHAI2.png" alt="CHAI Logo" class="logo-image">
+                </div>
+                <div class="logo-container">
+                    <img src="ICF-SL.jpg" alt="ICF-SL Logo" class="logo-image">
+                </div>
+            </div>
+            <div class="title-section">
+                <h1 class="main-title">Malaria Program Review (MPR)</h1>
+                <h2 class="subtitle">Code Repository and Analysis System</h2>
+                <h3 class="subtitle">by</h3>
+                <h2 class="subtitle">Informatics Consultancy Firm Sierra Leone (ICF-SL)</h2>
+                <h2 class="subtitle"><em>A local firm with international standards</em></h2>
+            </div>
+        </div>
+    </div>
+
     <div class="dashboard-container">
-        <div class="tab-navigation">
+        <button class="tab-toggle-btn collapsed" onclick="toggleTabs()" id="tabToggleBtn">
+            <span>📂</span>
+            <span>Show Navigation Menu</span>
+            <span class="arrow">▼</span>
+        </button>
+
+        <div class="tab-navigation" id="tabNavigation">
             <button class="tab-button active" onclick="openTab(event, 'overview')">Overview</button>
             <button class="tab-button" onclick="openTab(event, 'tab2')">Malaria Analysis Code</button>
             <button class="tab-button" onclick="openTab(event, 'tab3')">Data Visualization</button>
             <button class="tab-button" onclick="openTab(event, 'tab4')">Reports & Export</button>
         </div>
 
+        <!-- Tab 1: Overview -->
         <div id="overview" class="tab-content active">
             <div class="section-header">Code Repository</div>
-            <div class="content-text">
-                <strong>Malaria Data Analysis Code Repository</strong><br>
-                This system provides a comprehensive collection of Python scripts and analysis tools designed specifically for the National Malaria Control Programme (NMCP) in Sierra Leone. 
-                The code repository contains standardized functions for processing malaria surveillance data, calculating key indicators, and generating analytical reports that support evidence-based decision making.
+            <div class="collapsible-section">
+                <button class="section-toggle collapsed" onclick="toggleSection(this)">
+                    💻 Code Repository Overview
+                </button>
+                <div class="section-content">
+                    <div class="content-text">
+                        <strong>Malaria Data Analysis Code Repository</strong><br>
+                        This system provides a comprehensive collection of Python scripts and analysis tools designed specifically for the National Malaria Control Programme (NMCP) in Sierra Leone. 
+                        The code repository contains standardized functions for processing malaria surveillance data, calculating key indicators, and generating analytical reports that support evidence-based decision making.
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Tab 2: Malaria Analysis Code - LOADS FROM malaria-analysis.md -->
         <div id="tab2" class="tab-content">
             <div class="section-header">Malaria Data Analysis Code</div>
             <div id="tab2Loading" class="loading-message" style="display: none;">
-                <div>📂 Loading analysis code from repository...</div>
-                <div style="margin-top: 10px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
+                <div>📂 Loading analysis code from malaria-analysis.md...</div>
+                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #0066cc; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
             </div>
             <div id="tab2Error" class="error-message" style="display: none;">
-                ❌ Could not load malaria-analysis.md. Please ensure the file exists.
-                <br><button onclick="loadMalariaAnalysis()" style="margin-top: 10px; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer;">Retry</button>
+                ❌ Could not load malaria-analysis.md. Please ensure the file exists in the same directory.
+                <br><button onclick="loadMalariaAnalysisMD()" style="margin-top: 10px; background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Retry</button>
             </div>
             <div id="tab2Content"></div>
         </div>
 
+        <!-- Tab 3: Data Visualization - LOADS FROM analysis_code.md -->
         <div id="tab3" class="tab-content">
             <div class="section-header">Data Visualization</div>
             <div id="tab3Loading" class="loading-message" style="display: none;">
-                <div>📂 Loading visualization template...</div>
-                <div style="margin-top: 10px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #4A7BA7; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
+                <div>📂 Loading visualization template from analysis_code.md...</div>
+                <div style="margin-top: 15px;"><div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #0066cc; border-top: 3px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>
             </div>
             <div id="tab3Error" class="error-message" style="display: none;">
-                ❌ Could not load analysis_code.md. Please ensure the file exists.
+                ❌ Could not load analysis_code.md. Please ensure the file exists in the same directory.
+                <br><button onclick="loadAnalysisCodeMD()" style="margin-top: 10px; background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer;">Retry</button>
             </div>
             <div id="tab3Content"></div>
         </div>
 
+        <!-- Tab 4: Reports & Export -->
         <div id="tab4" class="tab-content">
             <div class="section-header">Reports & Export</div>
-            <div class="content-text">This tab will contain report generation and data export functionality.</div>
+            <div class="content-text">
+                This tab will contain report generation and data export functionality.
+            </div>
         </div>
     </div>
 
     <script>
+        // Tab navigation functions
         function openTab(evt, tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            if (evt) evt.currentTarget.classList.add('active');
+            var tabcontents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontents.length; i++) {
+                tabcontents[i].classList.remove("active");
+            }
             
-            if (tabName === 'tab2' && document.getElementById('tab2Content').innerHTML === '') loadMalariaAnalysis();
-            if (tabName === 'tab3' && document.getElementById('tab3Content').innerHTML === '') loadAnalysisCode();
+            var tabbuttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            var targetTab = document.getElementById(tabName);
+            if (targetTab) targetTab.classList.add("active");
+            if (evt && evt.currentTarget) evt.currentTarget.classList.add("active");
+            
+            // Load content dynamically when tabs are opened
+            if (tabName === 'tab2') {
+                loadMalariaAnalysisMD();
+            }
+            if (tabName === 'tab3') {
+                loadAnalysisCodeMD();
+            }
+            
+            // Auto-collapse navigation after tab selection
+            var tabNav = document.getElementById("tabNavigation");
+            var toggleBtn = document.getElementById("tabToggleBtn");
+            if (tabNav && toggleBtn) {
+                tabNav.classList.remove("expanded");
+                toggleBtn.classList.add("collapsed");
+                toggleBtn.innerHTML = '<span>📂</span><span>Show Navigation Menu</span><span class="arrow">▼</span>';
+            }
         }
 
-        function toggleSection(btn) {
-            const content = btn.nextElementSibling;
-            const isCollapsed = content.classList.contains('expanded');
-            content.classList.toggle('expanded', !isCollapsed);
-            btn.classList.toggle('collapsed', isCollapsed);
+        function toggleTabs() {
+            var tabNav = document.getElementById("tabNavigation");
+            var toggleBtn = document.getElementById("tabToggleBtn");
+            
+            if (tabNav && toggleBtn) {
+                if (tabNav.classList.contains("expanded")) {
+                    tabNav.classList.remove("expanded");
+                    toggleBtn.classList.add("collapsed");
+                    toggleBtn.innerHTML = '<span>📂</span><span>Show Navigation Menu</span><span class="arrow">▼</span>';
+                } else {
+                    tabNav.classList.add("expanded");
+                    toggleBtn.classList.remove("collapsed");
+                    toggleBtn.innerHTML = '<span>📂</span><span>Hide Navigation Menu</span><span class="arrow">▼</span>';
+                }
+            }
+        }
+
+        function toggleSection(button) {
+            if (!button || !button.nextElementSibling) return;
+            var content = button.nextElementSibling;
+            var isCollapsed = content.classList.contains("expanded");
+            
+            if (isCollapsed) {
+                content.classList.remove("expanded");
+                button.classList.add("collapsed");
+            } else {
+                content.classList.add("expanded");
+                button.classList.remove("collapsed");
+            }
         }
 
         function copyCode(elementId) {
-            const codeElement = document.getElementById(elementId);
-            const text = codeElement.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
-                const originalHtml = btn.innerHTML;
-                btn.innerHTML = '✅ Copied!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.innerHTML = originalHtml;
-                    btn.classList.remove('copied');
+            const codeContent = document.getElementById(elementId);
+            if (!codeContent) return;
+            
+            let copyBtn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
+            if (!copyBtn) {
+                const btns = document.querySelectorAll('.copy-btn');
+                for (let btn of btns) {
+                    if (btn.getAttribute('onclick') === `copyCode('${elementId}')`) {
+                        copyBtn = btn;
+                        break;
+                    }
+                }
+            }
+            
+            if (!copyBtn) return;
+            
+            const textContent = codeContent.innerText || codeContent.textContent;
+            
+            navigator.clipboard.writeText(textContent).then(function() {
+                copyBtn.innerHTML = '<span>✅</span> Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(function() {
+                    copyBtn.innerHTML = '<span>📋</span> Copy Code';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                const textarea = document.createElement('textarea');
+                textarea.value = textContent;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                copyBtn.innerHTML = '<span>✅</span> Copied!';
+                copyBtn.classList.add('copied');
+                setTimeout(function() {
+                    copyBtn.innerHTML = '<span>📋</span> Copy Code';
+                    copyBtn.classList.remove('copied');
                 }, 2000);
             });
         }
 
+        function displayResultImage(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const placeholder = document.getElementById('resultImagePlaceholder');
+                    const uploadedImage = document.getElementById('uploadedResultImage');
+                    if (placeholder && uploadedImage) {
+                        placeholder.style.display = 'none';
+                        uploadedImage.src = e.target.result;
+                        uploadedImage.style.display = 'block';
+                        uploadedImage.onclick = function() {
+                            document.getElementById('resultImageUpload').click();
+                        };
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Syntax highlighting function
         function highlightPythonCode(code) {
-            return code
-                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-                .replace(/\b(import|from|def|class|if|else|elif|for|while|return|with|as|break|continue|pass|lambda|try|except|finally)\b/g, '<span class="keyword">$1</span>')
-                .replace(/\b(print|len|range|str|int|float|list|dict|set|tuple|open|read|write|append|split|join|format)\b/g, '<span class="function">$1</span>')
-                .replace(/\b(pd|np|plt|sns|Path|tabulate)\b/g, '<span class="variable">$1</span>')
+            let highlighted = code
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\b(import|from|def|class|if|else|elif|for|while|try|except|finally|return|with|as|break|continue|pass|yield|lambda|global|nonlocal|assert|del|raise|async|await)\b/g, '<span class="keyword">$1</span>')
+                .replace(/\b(print|len|range|enumerate|zip|map|filter|sum|max|min|abs|round|sorted|reversed|any|all|type|isinstance|hasattr|getattr|setattr|delattr|dir|vars|id|hash|repr|str|int|float|bool|list|tuple|dict|set|frozenset|open|input)\b/g, '<span class="function">$1</span>')
+                .replace(/\b(pd|np|plt|sns|px|go|os|sys|re|json|csv|datetime|time|math|random|collections|itertools|functools|pathlib|Path|tabulate)\b/g, '<span class="variable">$1</span>')
+                .replace(/\b(\w+)\s*\(/g, '<span style="color: #06b6d4; font-weight: 600;">$1</span>(')
                 .replace(/'([^'\\]|\\.)*'/g, '<span class="string">$&</span>')
                 .replace(/"([^"\\]|\\.)*"/g, '<span class="string">$&</span>')
+                .replace(/'''[\s\S]*?'''/g, '<span class="string">$&</span>')
+                .replace(/"""[\s\S]*?"""/g, '<span class="string">$&</span>')
                 .replace(/\b(\d+\.?\d*)\b/g, '<span class="number">$1</span>')
                 .replace(/#.*$/gm, '<span class="comment">$&</span>')
-                .replace(/([=+\-*/%<>!&|]+)/g, '<span class="operator">$1</span>');
+                .replace(/([=+\-*/%<>!&|^~]+)/g, '<span class="operator">$1</span>')
+                .replace(/\.(\w+)/g, '.<span style="color: #38bdf8; font-weight: 500;">$1</span>')
+                .replace(/\b(None|True|False|self|cls)\b/g, '<span style="color: #ec4899; font-weight: 600;">$1</span>');
+            return highlighted;
         }
 
-        async function loadMalariaAnalysis() {
-            const loading = document.getElementById('tab2Loading');
-            const error = document.getElementById('tab2Error');
-            const content = document.getElementById('tab2Content');
-            
-            loading.style.display = 'block';
-            error.style.display = 'none';
-            content.innerHTML = '';
-            
-            try {
-                const response = await fetch('malaria-analysis.md');
-                if (!response.ok) throw new Error('File not found');
-                const markdown = await response.text();
-                content.innerHTML = parseMarkdown(markdown);
-                loading.style.display = 'none';
-            } catch (err) {
-                loading.style.display = 'none';
-                error.style.display = 'block';
-                content.innerHTML = '<div class="content-text">⚠️ Could not load malaria-analysis.md. Please create this file in the same directory.</div>';
-            }
-        }
-
-        async function loadAnalysisCode() {
-            const loading = document.getElementById('tab3Loading');
-            const error = document.getElementById('tab3Error');
-            const content = document.getElementById('tab3Content');
-            
-            loading.style.display = 'block';
-            error.style.display = 'none';
-            content.innerHTML = '';
-            
-            try {
-                const response = await fetch('analysis_code.md');
-                if (!response.ok) throw new Error('File not found');
-                const markdown = await response.text();
-                content.innerHTML = parseMarkdown(markdown);
-                loading.style.display = 'none';
-            } catch (err) {
-                loading.style.display = 'none';
-                error.style.display = 'block';
-                content.innerHTML = '<div class="content-text">⚠️ Could not load analysis_code.md. Please create this file in the same directory.</div>';
-            }
-        }
-
-        function parseMarkdown(markdown) {
+        // Parse markdown and convert to HTML sections
+        function parseMarkdownToHtml(markdown, includeOutputSection = false) {
             const lines = markdown.split('\n');
             let html = '';
             let currentStep = '';
-            let currentDescription = '';
+            let currentDesc = '';
             let currentCode = '';
             let inCodeBlock = false;
             let stepCounter = 0;
@@ -432,15 +837,15 @@
                 
                 if (line.startsWith('## Step')) {
                     if (currentStep) {
-                        html += buildStepSection(stepCounter, currentStep, currentDescription, currentCode);
+                        html += buildStepSection(stepCounter, currentStep, currentDesc, currentCode);
                         stepCounter++;
                     }
                     currentStep = line.replace('## ', '').trim();
-                    currentDescription = '';
+                    currentDesc = '';
                     currentCode = '';
                     inCodeBlock = false;
                 }
-                else if (line.startsWith('```') && line.includes('python')) {
+                else if (line.startsWith('```python') || (line.startsWith('```') && !line.includes('```'))) {
                     inCodeBlock = true;
                     currentCode = '';
                 }
@@ -450,26 +855,30 @@
                 else if (inCodeBlock) {
                     currentCode += line + '\n';
                 }
-                else if (currentStep && line.trim() !== '' && !line.startsWith('```')) {
-                    if (currentDescription) currentDescription += '<br>';
-                    currentDescription += line;
+                else if (currentStep && line.trim() !== '' && !line.startsWith('**') && !line.startsWith('---')) {
+                    if (currentDesc) currentDesc += '<br>';
+                    currentDesc += line;
                 }
             }
             
             if (currentStep) {
-                html += buildStepSection(stepCounter, currentStep, currentDescription, currentCode);
+                html += buildStepSection(stepCounter, currentStep, currentDesc, currentCode);
+            }
+            
+            if (includeOutputSection) {
+                html += buildOutputSection();
             }
             
             return html;
         }
 
-        function buildStepSection(id, stepTitle, description, code) {
+        function buildStepSection(id, title, description, code) {
+            const codeId = `dynamicCode_${id}`;
             const stepId = `step_${id}`;
-            const codeId = `code_${id}`;
             
             let html = `<div class="collapsible-section">
                 <button class="section-toggle collapsed" onclick="toggleSection(this)">
-                    📋 ${stepTitle}
+                    📋 ${title}
                 </button>
                 <div class="section-content">`;
             
@@ -493,23 +902,128 @@
             return html;
         }
 
-        function displayResultImage(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('resultImagePlaceholder').style.display = 'none';
-                    const img = document.getElementById('uploadedResultImage');
-                    img.src = e.target.result;
-                    img.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+        function buildOutputSection() {
+            return `<div class="collapsible-section">
+                <button class="section-toggle collapsed" onclick="toggleSection(this)">
+                    📊 Sample Output Results
+                </button>
+                <div class="section-content">
+                    <div class="step-description">
+                        View the sample output generated by running the analysis code. Upload your results.png image to display your analysis results.
+                    </div>
+                    <div class="result-image-section">
+                        <div class="result-image-frame">
+                            <input type="file" id="resultImageUpload" accept="image/*" onchange="displayResultImage(event)" style="display: none;">
+                            <div class="result-image-placeholder" id="resultImagePlaceholder" onclick="document.getElementById('resultImageUpload').click();">
+                                <div class="placeholder-icon">📊</div>
+                                <div class="placeholder-text">Click to upload results.png</div>
+                                <div class="placeholder-subtext">Upload your analysis output image</div>
+                            </div>
+                            <img id="uploadedResultImage" class="uploaded-result-image" style="display: none;" onclick="document.getElementById('resultImageUpload').click();">
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        // Load malaria-analysis.md for Tab 2
+        async function loadMalariaAnalysisMD() {
+            const loadingDiv = document.getElementById('tab2Loading');
+            const errorDiv = document.getElementById('tab2Error');
+            const contentDiv = document.getElementById('tab2Content');
+            
+            if (contentDiv.getAttribute('data-loaded') === 'true') return;
+            
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            contentDiv.style.display = 'none';
+            contentDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch('malaria-analysis.md');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const markdown = await response.text();
+                const parsedHtml = parseMarkdownToHtml(markdown, true);
+                contentDiv.innerHTML = parsedHtml;
+                contentDiv.setAttribute('data-loaded', 'true');
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading malaria-analysis.md:', error);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                contentDiv.innerHTML = '<div class="content-text" style="color: #dc3545;">⚠️ Could not load malaria-analysis.md. Please ensure the file exists in the same directory as this HTML file.</div>';
+                contentDiv.style.display = 'block';
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('expanded'));
-            document.querySelectorAll('.section-toggle').forEach(b => b.classList.add('collapsed'));
+        // Load analysis_code.md for Tab 3
+        async function loadAnalysisCodeMD() {
+            const loadingDiv = document.getElementById('tab3Loading');
+            const errorDiv = document.getElementById('tab3Error');
+            const contentDiv = document.getElementById('tab3Content');
+            
+            if (contentDiv.getAttribute('data-loaded') === 'true') return;
+            
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            contentDiv.style.display = 'none';
+            contentDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch('analysis_code.md');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const markdown = await response.text();
+                const parsedHtml = parseMarkdownToHtml(markdown, false);
+                
+                // Add the visualization intro section
+                const finalHtml = `<div class="collapsible-section">
+                    <button class="section-toggle collapsed" onclick="toggleSection(this)">
+                        📊 Data Visualization Template
+                    </button>
+                    <div class="section-content">
+                        <div class="content-text">
+                            <strong>Malaria Data Visualization Template</strong><br>
+                            This section automatically reads and parses your analysis_code.md file from the repository when you open this tab. 
+                            It creates collapsible sections based on markdown headers (## Step) and applies Python syntax highlighting 
+                            to code blocks with unique colors for imports, functions, variables, and other Python elements.
+                        </div>
+                    </div>
+                </div>${parsedHtml}`;
+                
+                contentDiv.innerHTML = finalHtml;
+                contentDiv.setAttribute('data-loaded', 'true');
+                loadingDiv.style.display = 'none';
+                contentDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading analysis_code.md:', error);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                contentDiv.innerHTML = '<div class="content-text" style="color: #dc3545;">⚠️ Could not load analysis_code.md. Please ensure the file exists in the same directory as this HTML file.</div>';
+                contentDiv.style.display = 'block';
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            var tabNav = document.getElementById("tabNavigation");
+            var toggleBtn = document.getElementById("tabToggleBtn");
+            
+            if (tabNav && toggleBtn) {
+                tabNav.classList.remove("expanded");
+                toggleBtn.classList.add("collapsed");
+            }
+            
+            var sections = document.querySelectorAll('.section-content');
+            var buttons = document.querySelectorAll('.section-toggle');
+            
+            sections.forEach(function(section) {
+                if (section) section.classList.remove('expanded');
+            });
+            
+            buttons.forEach(function(button) {
+                if (button) button.classList.add('collapsed');
+            });
         });
     </script>
 </body>
